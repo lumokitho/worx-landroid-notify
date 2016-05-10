@@ -1,0 +1,12 @@
+{
+  "name": "landroidalarm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Olov Nilzén",
+  "license": "MIT",
+  "dependencies": {
+    "pushover-notifications": "^0.2.2",
+    "request": "^2.72.0"
+  }
+}

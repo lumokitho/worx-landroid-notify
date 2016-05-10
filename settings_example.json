@@ -1,0 +1,6 @@
+{
+    "landroid_host": "", // landroid ip or hostname
+    "landroid_pin": "", // landroid pin code
+    "pushover_token": "", //pushover.net token
+    "pushover_users": [ "" ] // pushover.net user(s)
+}
