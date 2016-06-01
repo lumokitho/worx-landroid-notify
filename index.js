@@ -49,25 +49,36 @@ function setState(state, val) {
             return;
         }
 
-        var title;
+        var title,
+            alarms = [
+                "Blade blocked",
+                "Repositioning error",
+                "Outside wire (Outside working area)",
+                "Blade blocked",
+                "Outside wire (Outside working area)",
+                "Mower lifted (Lifted up)",
+                "Error",
+                "Error (Set when Lifted up - Upside down?)",
+                "Error",
+                "Collision sensor blocked",
+                "Mower tilted",
+                "Charge error (Set when Lifted up?)",
+                "Battery error"
+            ];
 
         switch (state) {
             case OK:
-                title = "Landroid OK";
+                title = "OK";
                 break;
             case LANDROID_ALARM:
-                title = "Landroid alarm!";
+                title = alarms[val];
                 break;
             case CONNECTION_ERROR:
-                title = "Landroid connection error!";
+                title = "Connection error";
                 break;
         }
 
-        var message = 'state - ' + state;
-
-        if (val) {
-            message += ', val - ' + val;
-        }
+        var message = 'Landroid';
 
         var msg = {
             title: title,
