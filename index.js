@@ -43,9 +43,25 @@ function setState(state, val) {
             throw err;
         }
 
-        var currentState = JSON.parse(data);
+        var currentState = JSON.parse(data),
+            retry = 0;
+
+        if (currentState.state === state && currentState.retry >= 2) {
+            return;
+        }
 
         if (currentState.state === state) {
+            
+            if (!currentState.retry) {
+                currentState.retry = 0;
+            }
+
+            retry = currentState.retry + 1;
+        }
+
+        fs.writeFile(stateFilePath, JSON.stringify({ state: state, val: val, retry: retry }));
+
+        if (retry < 2) {
             return;
         }
 
@@ -100,11 +116,6 @@ function setState(state, val) {
 
             });
         });
-
-
-        fs.writeFile(stateFilePath, JSON.stringify({ state: state, val: val }));
-
-
     });
 
 
